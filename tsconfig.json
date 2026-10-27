@@ -11,5 +11,5 @@
     "noEmit": true,
     "types": ["node"]
   },
-  "include": ["packages/*/src", "scripts", "tests", "apps/desktop/src", "apps/desktop/electron"]
+  "include": ["packages/*/src", "scripts", "tests", "apps/desktop/src"]
 }
