@@ -1,0 +1,11 @@
+import fs from "node:fs";
+import { bundle } from "@remotion/bundler";
+import { renderMedia, selectComposition } from "@remotion/renderer";
+const project = JSON.parse(fs.readFileSync("output/project.json", "utf8"));
+const browserExecutable = "/opt/pw-browsers/chromium_headless_shell-1243/chrome-headless-shell-linux64/chrome-headless-shell";
+const serveUrl = await bundle({ entryPoint: "packages/animation-engine/src/entry.ts" });
+const inputProps = { project };
+const composition = await selectComposition({ serveUrl, id: "MotionProject", inputProps, browserExecutable });
+const t = Date.now();
+await renderMedia({ composition, serveUrl, codec: "h264", outputLocation: "/tmp/claude-0/-home-claude/decee6f4-970b-571a-80ac-b8d2efb5a8e8/scratchpad/b.mp4", inputProps, browserExecutable, frameRange: [100, 129], chromiumOptions: { gl: (process.env.GL as any) ?? "swangle" }, concurrency: Number(process.env.C ?? 0) || null, logLevel: "error" });
+console.log("30 frames:", (Date.now() - t) / 1000, "s");

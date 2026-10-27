@@ -1,0 +1,45 @@
+{
+  "name": "@ams/desktop",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "AI Motion Studio — نسخه دسکتاپ",
+  "main": "dist-electron/main.mjs",
+  "scripts": {
+    "build:electron": "node build-electron.mjs",
+    "build:ui": "vite build",
+    "build": "npm run build:ui && npm run build:electron",
+    "dev": "npm run build:electron && concurrently -k \"vite\" \"wait-on http://localhost:5173 && cross-env VITE_DEV_SERVER_URL=http://localhost:5173 electron .\"",
+    "start": "npm run build && electron .",
+    "dist:win": "npm run build && electron-builder --win nsis"
+  },
+  "build": {
+    "appId": "ir.akhavan.aimotionstudio",
+    "productName": "AI Motion Studio",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**",
+      "dist-electron/**"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "language": "1065"
+    }
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.4",
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "electron": "^38.4.0",
+    "electron-builder": "^26.0.12",
+    "esbuild": "^0.25.11",
+    "vite": "^7.1.12",
+    "wait-on": "^9.0.1"
+  }
+}
