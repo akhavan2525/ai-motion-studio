@@ -7,7 +7,7 @@ import React from "react";
 import { AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig, Easing } from "remotion";
 import type { Palette, Scene, Style } from "@ams/project-schema";
 import { FONT_FAMILY } from "./fonts";
-import { darken, lighten } from "./color";
+import { darken, lighten, luminance } from "./color";
 
 type TitleScene = Extract<Scene, { action: "title_reveal" }>;
 
@@ -102,7 +102,12 @@ export const TitleReveal: React.FC<{ scene: TitleScene; palette: Palette; style:
             style={{
               position: "absolute",
               inset: 0,
-              background: paper ? lighten(palette.background, 0.75) : `${darken(palette.background, 0.1)}cc`,
+              background: paper
+                ? // متن روشن (پالت شب) روی کارت روشن خوانا نیست؛ آن‌وقت کارت تیره می‌شود
+                  luminance(palette.text) > 0.5
+                  ? darken(palette.background, 0.25)
+                  : lighten(palette.background, 0.75)
+                : `${darken(palette.background, 0.1)}cc`,
               borderRadius: paper ? 6 : fontSize * 0.25,
               transform: `scaleX(${card})`,
               transformOrigin: "100% 50%",

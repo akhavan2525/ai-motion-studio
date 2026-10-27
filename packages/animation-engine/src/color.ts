@@ -25,3 +25,12 @@ export function layerColor(palette: Palette, depth: number): string {
   const i = Math.min(stops.length - 2, Math.floor(x));
   return mix(stops[i], stops[i + 1], x - i);
 }
+
+/** روشنایی نسبی (۰ تیره تا ۱ روشن) */
+export function luminance(hex: string): number {
+  const [r, g, b] = hexToRgb(hex).map((v) => {
+    const c = v / 255;
+    return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  });
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}

@@ -59,6 +59,19 @@ npm run studio                    # Remotion Studio برای طراحی صحنه
 
 اولین رندر در ویندوز مرورگر headless خود Remotion را یک‌بار دانلود می‌کند.
 
+## استفاده از داخل Claude (اسکیل)
+
+اسکیل `skills/ai-motion-studio/SKILL.md` به Claude یاد می‌دهد خودش فایل JSON پروژه را بنویسد و با موتور همین ریپو MP4 بسازد؛ بدون کلید API جداگانه، چون مغز AI خود Claude است.
+
+```powershell
+npm run render -- examples/logo-motion.json                 # ops (همان ابزارهای AI) → MP4
+npm run render -- examples/paper-cut-full.json --stills     # پروژه کامل → ۴ فریم PNG
+npm run render -- spec.json --check                         # فقط اعتبارسنجی
+npm run render -- edits.json --base output/x.project.json   # ویرایش جزئی پروژه قبلی
+```
+
+نصب اسکیل در Claude Code: پوشه `skills/ai-motion-studio` را در `~/.claude/skills/` (یا `.claude/skills/` همین ریپو) کپی کنید، یا از کارت پیشنهاد اسکیل در Claude ذخیره‌اش کنید.
+
 ## ساختار
 
 ```
@@ -70,7 +83,10 @@ packages/
   avalai-client/         اتصال به AvalAI (سازگار با OpenAI) + قرارداد ChatClient
   animation-engine/      کامپوزیشن Remotion، شکل‌های کاغذی، متن و لوگو
   render-engine/         رندر MP4 و فریم ثابت
-scripts/make.ts          خط فرمان
+scripts/make.ts          خط فرمان (با مغز AI داخلی)
+scripts/render.ts        رندر مستقیم از JSON (برای اسکیل Claude)
+skills/ai-motion-studio/ اسکیل Claude
+examples/                نمونه‌های JSON
 tests/                   تست‌های واحد و تست سرتاسری Electron
 ```
 
