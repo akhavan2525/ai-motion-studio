@@ -9,7 +9,7 @@ const fs = require("fs");
   fs.mkdirSync(path.dirname(out), { recursive: true });
   const app = await electron.launch({
     args: [path.resolve(__dirname, "../apps/desktop"), "--no-sandbox"],
-    executablePath: require("electron"),
+    executablePath: require(require.resolve("electron", { paths: [path.join(__dirname, "../apps/desktop")] })),
     env: { ...process.env, AMS_AUTO_OUTPUT: out, AMS_PROVIDER: "offline" },
   });
   const win = await app.firstWindow();

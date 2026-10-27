@@ -41,12 +41,24 @@
 
 پیش‌نیاز: [Node.js 22](https://nodejs.org) (نصب FFmpeg جداگانه لازم نیست؛ Remotion نسخه داخلی خودش را دارد).
 
+نصب در دو بخش جداست تا اگر فقط موتور (و اسکیل Claude) را می‌خواهید، Electron دانلود نشود:
+
 ```powershell
-npm install
+npm install                    # موتور + خط فرمان + اسکیل (بدون Electron، چند دقیقه)
 npm test                       # تست‌های خودکار
-npm run desktop:build
-npx electron apps/desktop      # اجرای برنامه دسکتاپ
+
+# فقط اگر برنامه دسکتاپ را می‌خواهید:
+npm run desktop:install        # Electron (~۱۰۰ مگابایت از GitHub)
+npm run desktop:start          # ساخت و اجرای برنامه دسکتاپ
 ```
+
+اگر دانلود Electron کند است یا گیر می‌کند، قبل از `desktop:install` یک آینه تعیین کنید:
+
+```powershell
+$env:ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
+```
+
+اگر `npm install` گیر کرد، با Ctrl+C متوقفش کنید، پوشه `node_modules` را پاک کنید و دوباره اجرا کنید.
 
 خط فرمان (بدون رابط کاربری):
 

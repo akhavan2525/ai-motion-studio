@@ -18,7 +18,7 @@ Cannot yet: edit raw footage (trim, cut, subtitles on a video), add music/voice,
 ## Setup (once per machine)
 
 1. Find the repo: look for a folder containing `scripts/render.ts` and `packages/animation-engine` (often the current working directory). If missing, clone it: `git clone https://github.com/akhavan2525/ai-motion-studio`.
-2. In the repo run `npm install` (Node 22+). First render downloads a headless Chromium on Windows/macOS; FFmpeg is bundled.
+2. In the repo run `npm install` (Node 22+). This installs only the engine, not Electron, so it is quick. First render downloads a headless Chromium on Windows/macOS; FFmpeg is bundled. The desktop app is optional and installed separately with `npm run desktop:install`.
 
 All commands below run from the repo root.
 

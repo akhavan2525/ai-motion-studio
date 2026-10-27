@@ -5,8 +5,7 @@
   "type": "module",
   "description": "ادیتور هوشمند موشن‌گرافیک با چت فارسی و موتور انیمیشن اختصاصی",
   "workspaces": [
-    "packages/*",
-    "apps/*"
+    "packages/*"
   ],
   "scripts": {
     "make": "tsx scripts/make.ts",
@@ -14,8 +13,10 @@
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "studio": "remotion studio packages/animation-engine/src/entry.ts",
-    "desktop:dev": "npm run dev -w @ams/desktop",
-    "desktop:build": "npm run build -w @ams/desktop"
+    "desktop:dev": "npm run dev --prefix apps/desktop",
+    "desktop:build": "npm run build --prefix apps/desktop",
+    "desktop:install": "npm install --prefix apps/desktop",
+    "desktop:start": "npm start --prefix apps/desktop"
   },
   "devDependencies": {
     "@types/node": "^22.18.0",
