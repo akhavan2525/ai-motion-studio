@@ -1,0 +1,40 @@
+{
+  "project": "معرفی دوره - عمودی",
+  "fps": 30,
+  "durationFrames": 240,
+  "aspect": "9:16",
+  "style": "paper-cut",
+  "palette": {
+    "background": "#1b2440",
+    "layers": ["#2e3a66", "#3f4f86", "#5468a8", "#7b8fd1"],
+    "primary": "#9fb4ff",
+    "accent": "#ffd166",
+    "text": "#f5f7ff"
+  },
+  "scenes": [
+    {
+      "id": "bg",
+      "action": "paper_layers_reveal",
+      "startFrame": 0,
+      "durationFrames": 240,
+      "camera": "pan",
+      "layers": [
+        { "id": "sun", "shape": "sun", "depth": 0.05, "motions": ["rise", "spin"], "delayFrames": 0 },
+        { "id": "clouds", "shape": "clouds", "depth": 0.2, "motions": ["drop", "float"], "delayFrames": 6 },
+        { "id": "city-far", "shape": "city", "depth": 0.45, "motions": ["rise", "parallax"], "delayFrames": 10 },
+        { "id": "city-near", "shape": "city", "depth": 0.7, "motions": ["rise", "parallax"], "delayFrames": 16 },
+        { "id": "hills", "shape": "hills", "depth": 1, "motions": ["rise", "parallax"], "delayFrames": 22 }
+      ]
+    },
+    {
+      "id": "title",
+      "action": "title_reveal",
+      "startFrame": 40,
+      "durationFrames": 200,
+      "text": "دوره جدید ثبت‌نام شروع شد",
+      "subtitle": "ظرفیت محدود",
+      "animation": "word-by-word",
+      "overScene": "bg"
+    }
+  ]
+}

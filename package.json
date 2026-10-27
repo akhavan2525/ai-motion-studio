@@ -10,6 +10,7 @@
   ],
   "scripts": {
     "make": "tsx scripts/make.ts",
+    "render": "tsx scripts/render.ts",
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "studio": "remotion studio packages/animation-engine/src/entry.ts",

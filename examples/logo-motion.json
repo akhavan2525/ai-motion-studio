@@ -1,0 +1,9 @@
+{
+  "ops": [
+    { "name": "createProject", "args": { "name": "لوگوموشن آکادمی اخوان", "durationSeconds": 6, "style": "paper-cut", "aspect": "16:9", "palette": "gold" } },
+    { "name": "addPaperCutScene", "args": { "id": "bg", "startSeconds": 0, "durationSeconds": 6, "theme": "landscape", "camera": "push-in" } },
+    { "name": "animateLogo", "args": { "id": "logo", "startSeconds": 0.8, "durationSeconds": 3, "monogram": "AK" } },
+    { "name": "addAnimatedText", "args": { "id": "title", "text": "آکادمی اخوان", "subtitle": "یادگیری هوش مصنوعی", "startSeconds": 3.4, "durationSeconds": 2.6, "animation": "paper-strip" } },
+    { "name": "exportVideo", "args": { "fileName": "akhavan-logo" } }
+  ]
+}
